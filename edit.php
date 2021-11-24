@@ -106,6 +106,7 @@ $title='edit';
       
       <!-- SUBMIT BUTTION DIV-->
         <button type="submit" name="submit" id="submit"class="btn btn-success">Save Changes</button>
+        <td><a href="records.php?id" class="btn btn-primary"> BACK TO LIST </a></td>
     </form>
 <?php } ?><!-- END OF ELSE STATEMENT -->
 
