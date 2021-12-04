@@ -1,16 +1,16 @@
 <?php 
 
-//$host='127.0.0.1';
-//$db='attendace_db';
-//$user='root';
-//$pass='';
-//$charset='utf8mb4';
-
-$host='b0tgfpkm1nuzvojebjvb-mysql.services.clever-cloud.com';
-$db='b0tgfpkm1nuzvojebjvb';
-$user='uzd4gsef776t0tyf';
-$pass='spWr32xjmJOnVbQzQ0JP';
+$host='127.0.0.1';
+$db='attendace_db';
+$user='root';
+$pass='';
 $charset='utf8mb4';
+
+// $host='b0tgfpkm1nuzvojebjvb-mysql.services.clever-cloud.com';
+// $db='b0tgfpkm1nuzvojebjvb';
+// $user='uzd4gsef776t0tyf';
+// $pass='spWr32xjmJOnVbQzQ0JP';
+// $charset='utf8mb4';
 
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -40,7 +40,11 @@ try
     }
 
 require_once 'crud.php';
+require_once 'user.php';
 $crud=new crud($pdo);
+$user=new user($pdo);
+
+$user->insertUser("admin","password");
 ?>
 
 

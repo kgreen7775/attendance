@@ -5,6 +5,7 @@ $title='View Record';
 
 <?php 
   require_once 'includes/header.php';
+  require_once 'includes/check.php';
   require_once 'db/conn.php';
 
   // Get attendee by ID
@@ -24,7 +25,7 @@ $title='View Record';
 
  <!--THE VARIABLE POST IS BEIGN USED TO ISSUE THE VALUE TO THE USER INTERFACE -->
 <div class="card" style="width: 18rem;">
-  <img src="img/person.jpg" class="card-img-top" alt="...">
+<img src="<?php echo empty($results['imgpath']) ? "img/person.jpg" : $results['imgpath']; ?>" class="card-img-top" alt="img/person.jpg">
   <div class="card-body">
     <h5 class="card-title"> 
     <?php echo  $results['FirstName'].' '.$results['LastName']; ?> 

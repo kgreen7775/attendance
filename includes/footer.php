@@ -1,7 +1,10 @@
 
 
-<div id="footer">
-<?php echo 'Copyright &copy'.date('Y');?>
+<div id="footer" class="p-3 mb-2 bg-primary text-white fixed-bottom">
+<?php //echo 'Copyright &copy'.date('Y');?>
+
+<p class="text-center">Copyright &copy; - IT Conference Attendance System <?php date('Y'); ?> </p>
+
 </div>
 
 </div> <!-- Closing div for body div that opened in header-->

@@ -86,7 +86,18 @@ $title='index';
        </div>
       </div>
 
+      <br/>
+      <br/> 
+      <!-- PICK UPLOAD DIV-->
+      <div class="mb-3"> 
+        <!--<label for="avatar" class="form-label">Upload Image (Optional)</label> -->
+        <input type="file" accept="image/*" class="custom-file-input" id="image" name="image"></input>
+        <label class="custom-file-input" for="image"></label>
+        <small id="image" class="form-text text-danger">Image Upload is Optional</small>
+      </div>
 
+      <br/>
+      <br/>  
 
       <div class="mb-3 form-check"> <!-- CHECK BOX DIV-->
         <input type="checkbox" class="form-check-input" id="submit" name="submit">

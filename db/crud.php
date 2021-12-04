@@ -11,11 +11,11 @@ class crud
         $this ->db = $conn;
     }
     // function that creates records for database
-    public function insertAttendee($fname,$lname,$dob,$job,$email,$phone)
+    public function insertAttendee($fname,$lname,$dob,$job,$email,$phone,$imgpath)
     {
        try
        {
-        $sql="INSERT INTO attendee (FirstName, LastName, DateOfBirth,Specialization_id,Email,Contact) VALUES(:fname,:lname,:dob,:job,:email,:phone)";
+        $sql="INSERT INTO attendee (FirstName, LastName, DateOfBirth,Specialization_id,Email,Contact,img_path) VALUES(:fname,:lname,:dob,:job,:email,:phone,:imgpath)";
        // binding all placeholders to actual values
         $stmt=$this->db->prepare($sql);
         $stmt->bindparam(':fname',$fname);
@@ -24,6 +24,7 @@ class crud
         $stmt->bindparam(':job',$job);
         $stmt->bindparam(':email',$email);
         $stmt->bindparam(':phone',$phone);
+        $stmt->bindparam(':imgpath',$imgpath);
         
 
         $stmt->execute();
@@ -154,6 +155,29 @@ class crud
             return false;
         }
     }   
+
+
+    public function getSpecializationByID($job)
+    {
+        try
+        {
+            $sql="SELECT *FROM `specialization` WHERE `specialization_id` =:job";
+            $stmt= $this->db->prepare($sql);
+            $stmt->bindparam(':job',$job);
+            $stmt->execute();
+            $results=$stmt->fetch();
+            
+            return $results;
+        }
+        catch(\PDOException $e)
+            {
+                //throw $th;
+                echo $e->getMessage();
+                return false;
+            }
+
+    }
+
 
 }
 

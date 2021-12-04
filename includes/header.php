@@ -1,3 +1,9 @@
+<!-- the session function located in the session.php file
+is used to resume a session. including it here will make
+it lod on all pages that require the header file --> 
+<?php include_once 'includes/session.php' ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,10 +26,9 @@
     <title> Attendance - <?php echo $title ?> </title>
   </head>
   <body>
-      <div class="container">
-      
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" action="signin.php">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">IT CONFERENCE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,17 +40,41 @@
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="records.php">View Attendees</a>
+          <a class="nav-link active" href="records.php">View Attendees</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+        </li> -->
+
       </ul>
     </div>
   </div>
+
+  <div class="navbar-nav mr-auto"  id="navbarNav">
+      <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >Login</a>
+        <ul class="dropdown-menu">
+        <?php 
+      if(!isset($_SESSION['userid']))
+      {
+        ?>
+          <li><a class="dropdown-item" href="signin.php">Sign In</a></li>
+          <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+      <?php }else {?>
+        <span style="text-align: center;"> Hi <?php echo $_SESSION['username'].','; ?></span>
+        <li><a class="dropdown-item" href="signout.php">Sign Out</a></li>
+      <?php }?>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="signup.php">Sign Up</a></li>
+          <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+        </ul>
+      </li>
+  </div>
 </nav>
+
+
+  <div class="container">
+      
+
 <br/>
 <br/>

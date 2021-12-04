@@ -15,6 +15,8 @@ $title='confirm';
 <?php 
   require_once 'includes/header.php';
   require_once 'db/conn.php';
+  require_once 'sendemail.php';
+
 
   if(isset($_POST['submit']))
   {
@@ -25,12 +27,26 @@ $title='confirm';
     $job=$_POST['job'];
     $email=$_POST['email'];
     $phone=$_POST['phone'];
+
+
+
+
+    $original_file_name = $_FILES['image']['tmp_name'];
+    $ext = pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+    $target_dir = 'upload/';
+  //  $destination = $target_dir.basename($_FILES['avatar']['name']);
+    $destination = "$target_dir$contact.$ext";
+    move_uploaded_file($original_file_nam,$destination);
+
+
+
    
     //Call function to insert and track if successful or not
-    $issuccess=$crud->insertAttendee($fname,$lname,$dob,$job,$email,$phone);
-   
+    $issuccess=$crud->insertAttendee($fname,$lname,$dob,$job,$email,$phone,$imgpath);
+    $NameOfSpecialization = $crud->getSpecializationByID($job);
     if($issuccess)
     {
+      sendemail::sendmail($email,'Welcome to IT Conference 2021','We\'re Happy to have you onboard');
       //echo '<h1 class="text-center text-success">Confirm Registration</h1>';
       echo 'includes/successmsg.php';
     }
@@ -75,13 +91,13 @@ $title='confirm';
 
 <!--print values that were passed from the action using 'post'-->
  <div class="card" style="width: 18rem;">
-  <img src="img/person.jpg" class="card-img-top" alt="...">
+  <img src="<?php echo $destination ?>" class="card-img-top" alt="img/person.jpg">
   <div class="card-body">
     <h5 class="card-title"> 
     <?php echo  $_POST['firstname'].' '.$_POST['lastname']; ?> 
     </h5>
     <p class="card-text">
-        Area of Speciality:<?php echo  $_POST['job']; ?>
+        Area of Speciality:<?php echo  $NameOfSpecialization['NameOfSpecialization']; ?>
     </p>
     <p class="card-text">
         Date of Birth:<?php echo  $_POST['dob']; ?>
