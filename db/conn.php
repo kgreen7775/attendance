@@ -1,16 +1,16 @@
 <?php 
 
-$host='127.0.0.1';
-$db='attendace_db';
-$user='root';
-$pass='';
-$charset='utf8mb4';
+//$host='127.0.0.1';
+//$db='attendace_db';
+//$user='root';
+//$pass='';
+//$charset='utf8mb4';
 
-// $host='b0tgfpkm1nuzvojebjvb-mysql.services.clever-cloud.com';
-// $db='b0tgfpkm1nuzvojebjvb';
-// $user='uzd4gsef776t0tyf';
-// $pass='spWr32xjmJOnVbQzQ0JP';
-// $charset='utf8mb4';
+$host='b0tgfpkm1nuzvojebjvb-mysql.services.clever-cloud.com';
+$db='b0tgfpkm1nuzvojebjvb';
+$user='uzd4gsef776t0tyf';
+$pass='spWr32xjmJOnVbQzQ0JP';
+$charset='utf8mb4';
 
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
